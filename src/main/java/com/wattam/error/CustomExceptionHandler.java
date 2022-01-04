@@ -1,7 +1,6 @@
-package com.wattam.exception;
+package com.wattam.error;
 
 import javax.validation.ConstraintViolationException;
-
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
-    
+
     // EXCEPTION HANDLERS FUNCTIONS
 
     @ExceptionHandler(Exception.class)
@@ -56,11 +55,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     // OVERRIDE FUNCTIONS
 
     @Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
+            HttpHeaders headers, HttpStatus status, WebRequest request) {
 
         String[] details = ex.getLocalizedMessage().split("\n");
         ErrorResponse error = new ErrorResponse("invalid format", details);
 
         return new ResponseEntity<Object>(error, HttpStatus.BAD_REQUEST);
-    } 
+    }
 }

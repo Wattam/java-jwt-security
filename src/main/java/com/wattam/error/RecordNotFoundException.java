@@ -1,4 +1,4 @@
-package com.wattam.exception;
+package com.wattam.error;
 
 public class RecordNotFoundException extends RuntimeException {
 
