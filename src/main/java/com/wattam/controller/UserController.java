@@ -5,6 +5,8 @@ import java.util.List;
 import com.wattam.error.RecordNotFoundException;
 import com.wattam.model.UserModel;
 import com.wattam.repository.UserRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,12 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder encoder;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder encoder;
 
     public UserController(UserRepository userRepository, PasswordEncoder encoder) {
-        this.userRepository = userRepository;
         this.encoder = encoder;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/get")

@@ -4,6 +4,7 @@ import com.wattam.data.UserDetailsData;
 import com.wattam.model.UserModel;
 import com.wattam.repository.UserRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,11 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
-
-    public MyUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

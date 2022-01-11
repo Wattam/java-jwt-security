@@ -19,5 +19,4 @@ public class JavaJwtSecurityApplication {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder;
 	}
-
 }
