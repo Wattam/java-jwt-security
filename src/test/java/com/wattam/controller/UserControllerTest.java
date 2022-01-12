@@ -124,11 +124,51 @@ public class UserControllerTest {
     @Test
     void testPutException() {
 
-        
+        // Given
+        UserModel user = new UserModel();
+        user.setId(1L);
+        user.setUsername("username");
+        user.setPassword("password");
+
+        // When
+        RecordNotFoundException thrown = assertThrows(
+                RecordNotFoundException.class,
+                () -> {
+                    userController.put(user);
+                });
+
+        // Then
+        assertEquals("no user with the ID: 1", thrown.getMessage());
     }
 
     @Test
     void testDelete() {
 
+        // Given
+        UserModel user = new UserModel();
+        user.setUsername("username");
+        user.setPassword("password");
+        userRepository.save(user);
+
+        // When
+        userController.delete(user.getId());
+        int expected = userRepository.findAll().size();
+
+        // Then
+        assertEquals(expected, 0);
+    }
+
+    @Test
+    void testDeleteException() {
+
+        // When
+        RecordNotFoundException thrown = assertThrows(
+                RecordNotFoundException.class,
+                () -> {
+                    userController.delete(1L);
+                });
+
+        // Then
+        assertEquals("no user with the ID: 1", thrown.getMessage());
     }
 }
