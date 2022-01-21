@@ -1,4 +1,4 @@
-package com.wattam.services;
+package com.wattam.service;
 
 import com.wattam.data.UserDetailsData;
 import com.wattam.model.UserModel;

@@ -1,6 +1,6 @@
 package com.wattam.security;
 
-import com.wattam.services.MyUserDetailsService;
+import com.wattam.service.MyUserDetailsService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

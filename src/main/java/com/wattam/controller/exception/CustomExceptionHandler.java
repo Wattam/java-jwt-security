@@ -1,4 +1,4 @@
-package com.wattam.error;
+package com.wattam.controller.exception;
 
 import javax.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -47,7 +47,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
 
         String[] details = ex.getLocalizedMessage().split(";");
-        ErrorResponse error = new ErrorResponse("data integrity violation", details);
+        ErrorResponse error = new ErrorResponse("username already exists", details);
 
         return new ResponseEntity<Object>(error, HttpStatus.BAD_REQUEST);
     }

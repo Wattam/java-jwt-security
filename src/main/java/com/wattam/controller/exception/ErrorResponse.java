@@ -1,4 +1,4 @@
-package com.wattam.error;
+package com.wattam.controller.exception;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
